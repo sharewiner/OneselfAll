@@ -9,4 +9,7 @@
     <color name="ashen">#8A2BE2</color>
     <color name="white">#56ffffff</color>
 
+    <color name="clock_bg">#045cd3</color>
+    <color name="bg">#140d2c</color>
+
 </resources>

@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
 
-    <com.example.shaohui.oneselfall.common.CountShowedClockView
+    <com.example.shaohui.oneselfall.common.clock.CountShowedClockView
         android:id="@+id/csc_show"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
     <!--android:layout_height="100dp"-->
     <!--android:orientation="horizontal">-->
 
-    <!--<com.example.shaohui.oneselfall.common.FlipClockView-->
+    <!--<com.example.shaohui.oneselfall.common.clock.FlipClockView-->
     <!--android:id="@+id/fc_bg_1"-->
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="match_parent"-->
@@ -39,21 +39,21 @@
     <!--customs:TextSize="36sp"-->
     <!--customs:UpOrDown="false" />-->
 
-    <!--<com.example.shaohui.oneselfall.common.FlipClockView-->
+    <!--<com.example.shaohui.oneselfall.common.clock.FlipClockView-->
     <!--android:id="@+id/fc_bg_2"-->
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="match_parent"-->
     <!--android:layout_marginLeft="10dp"-->
     <!--android:layout_weight="1" />-->
 
-    <!--<com.example.shaohui.oneselfall.common.FlipClockView-->
+    <!--<com.example.shaohui.oneselfall.common.clock.FlipClockView-->
     <!--android:id="@+id/fc_bg_3"-->
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="match_parent"-->
     <!--android:layout_marginLeft="10dp"-->
     <!--android:layout_weight="1" />-->
 
-    <!--<com.example.shaohui.oneselfall.common.FlipClockView-->
+    <!--<com.example.shaohui.oneselfall.common.clock.FlipClockView-->
     <!--android:id="@+id/fc_bg_4"-->
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="match_parent"-->

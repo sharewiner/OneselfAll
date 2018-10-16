@@ -46,12 +46,7 @@ dependencies {
     implementation 'com.github.yanyiqun001:bannerDot:1.0'
 
     //网络请求
-    // Retrofit库
-    implementation 'com.squareup.retrofit2:retrofit:2.2.0'
-    // Okhttp库
-    implementation 'com.squareup.okhttp3:okhttp:3.7.0'
-    // Okhttp库
-    implementation 'com.squareup.retrofit2:converter-gson:2.2.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
 
     //pulltorefresh
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-12'

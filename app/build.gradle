@@ -4,7 +4,7 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.example.shaohui.oneselfall"
-        minSdkVersion 15
+        minSdkVersion 17
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -21,7 +21,6 @@ android {
         }
     }
 
-
     buildTypes {
         release {
             minifyEnabled false
@@ -31,10 +30,10 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     implementation 'com.android.support:recyclerview-v7:27.1.1'
+    implementation 'com.android.support:design:27.1.1'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
@@ -43,12 +42,33 @@ dependencies {
     api 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
-    implementation 'com.github.yanyiqun001:bannerDot:1.0'
+//    //顶部状态栏颜色
+//    implementation 'com.gyf.barlibrary:barlibrary:2.3.0'
+    //底部导航栏
+    implementation 'com.ashokvarma.android:bottom-navigation-bar:1.2.0'
 
-    //网络请求
-    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
-
-    //pulltorefresh
+    //pulltorefresh 下拉刷新
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-12'
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-12'
+
+    // adapter 上拉加载
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.22'
+
+    //圆形圆角圆弧图片
+    implementation 'com.github.open-android:RoundedImageView:v1.0.0'
+    //滚动广告
+    implementation 'com.youth.banner:banner:1.4.8'
+    //侧滑删除
+    implementation 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.2.3'
+    //时间地址选择器
+    implementation 'com.contrarywind:Android-PickerView:3.2.7'
+    //网络请求
+    // nohttp
+    implementation 'com.yolanda.nohttp:nohttp:1.0.2'
+    implementation 'com.google.code.gson:gson:2.4'
+    // json解析
+    implementation 'com.alibaba:fastjson:1.1.56.android'
+
+    //仿Ios请求状态
+    implementation project(':svprogresshud')
 }

@@ -11,5 +11,6 @@
 
     <color name="clock_bg">#045cd3</color>
     <color name="bg">#140d2c</color>
+    <color name="text_88">#888888</color>
 
 </resources>

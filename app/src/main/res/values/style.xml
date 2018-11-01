@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ImageTranslucentTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--<item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>-->
+
+    </style>
+
+    <style name="ImageTranslucentTheme.white" parent="Theme.AppCompat.Light.NoActionBar">
+
+    </style>
+    <style name="ImageTranslucentTheme_blue" parent="Theme.AppCompat.Light.NoActionBar">
+
+    </style>
+    <style name="App_Common_Theme" parent="Theme.AppCompat.Light.NoActionBar">
+
+    </style>
+</resources>

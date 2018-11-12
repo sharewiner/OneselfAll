@@ -1,28 +1,23 @@
-package com.example.shaohui.oneselfall.http;
+package com.example.shaohui.oneselfall.common.http;
 
 import android.content.Context;
 import android.util.Log;
 
 import com.example.shaohui.oneselfall.MyApplication;
 import com.example.shaohui.oneselfall.common.util.DataUtil;
-import com.example.shaohui.oneselfall.http.nohttp.CallServer;
-import com.example.shaohui.oneselfall.http.nohttp.HttpListener;
-import com.yolanda.nohttp.FileBinary;
-import com.yolanda.nohttp.NoHttp;
-import com.yolanda.nohttp.RequestMethod;
-import com.yolanda.nohttp.rest.CacheMode;
-import com.yolanda.nohttp.rest.Request;
-import com.yolanda.nohttp.rest.Response;
+import com.example.shaohui.oneselfall.common.util.SignUtils;
+import com.yanzhenjie.nohttp.FileBinary;
+import com.yanzhenjie.nohttp.NoHttp;
+import com.yanzhenjie.nohttp.RequestMethod;
+import com.yanzhenjie.nohttp.rest.CacheMode;
+import com.yanzhenjie.nohttp.rest.Request;
+import com.yanzhenjie.nohttp.rest.Response;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
 import java.util.Map;
-
-/**
- * Created by liuhailong on 2017/3/1.
- */
 
 public class NetWorkStringRequest {
 
@@ -33,26 +28,6 @@ public class NetWorkStringRequest {
         final Request<String> request = NoHttp.createStringRequest(url, requestMethod);
         //设置为带缓存的网络请求
         request.setCacheMode(CacheMode.ONLY_REQUEST_NETWORK);
-        //加密运算
-//        if (SysConfig.IS_SECRET) {
-//            Map<String , String> map = new HashMap<>();
-//            for (String key : paramsMap.keySet()) {
-//                //map.put(key, URLEncoder.encode(paramsMap.get(key)));
-//                map.put(key, paramsMap.get(key));
-//            }
-//            String timePoint = String.valueOf(new Date().getTime());
-//            map.put("time_point", timePoint);
-//            // 参数转换为json
-//            String paramData = mapToJson(map);
-//            // 加密参数
-//            paramData = aesencrypt(paramData);
-//            request.add("timePoint", timePoint);// String类型
-//            request.add("paramData", paramData);
-//        } else {
-//            for (String key : paramsMap.keySet()) {
-//                request.add(key, paramsMap.get(key));
-//            }
-//        }
 
         try {
             paramsMap.put("onceToken", MyApplication.getInstance().getOnceToken());
@@ -75,25 +50,18 @@ public class NetWorkStringRequest {
         CallServer.getRequestInstance().add(context, what, request, new HttpListener<String>() {
             @Override
             public void onSucceed(int what, Response<String> response) throws JSONException {
-                Log.d("inparkLog", response.get());
                 int responseCode = response.getHeaders().getResponseCode();// 服务器响应码
                 JSONObject jsonObject = null;
-
 
                 if (responseCode == 200) {
 
                     jsonObject = new JSONObject(response.get());
 
-                    if (RequestMethod.HEAD == response.getRequestMethod()) { // 请求方法为HEAD时没有响应内容
-//                        showMessageDialog(R.string.request_succeed, R.string.request_method_head);
-                    } else {
-
-                        if (onNetWorkResponse != null) {
-                            if (!DataUtil.isSpecialEmpty(jsonObject.getString("onceToken"))) {
-                                MyApplication.getInstance().setOnceToken(jsonObject.getString("onceToken"));
-                            }
-                            onNetWorkResponse.onSuccess(what, response);
+                    if (onNetWorkResponse != null) {
+                        if (!DataUtil.isSpecialEmpty(jsonObject.getString("onceToken"))) {
+                            MyApplication.getInstance().setOnceToken(jsonObject.getString("onceToken"));
                         }
+                        onNetWorkResponse.onSuccess(what, response);
                     }
                 } else {
                     if (onNetWorkResponse != null) {
@@ -105,10 +73,9 @@ public class NetWorkStringRequest {
             }
 
             @Override
-            public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) throws JSONException {
-                Log.d("inparkLog", exception.toString());
+            public void onFailed(int what, Response<String> response) throws JSONException {
                 if (onNetWorkResponse != null) {
-                    onNetWorkResponse.onFailed(what, url, tag, exception, responseCode, networkMillis);
+                    onNetWorkResponse.onFailed(what, response);
                 }
             }
         }, true, false);
@@ -132,29 +99,20 @@ public class NetWorkStringRequest {
 
                 if (responseCode == 200) {
 
-                    if (RequestMethod.HEAD == response.getRequestMethod()) { // 请求方法为HEAD时没有响应内容
-//                        showMessageDialog(R.string.request_succeed, R.string.request_method_head);
-                    } else {
-                        if (onNetWorkResponse != null) {
+                    if (onNetWorkResponse != null) {
 //                            JSONObject jsonObject=new JSONObject(response.get());
 //                            if (! DataUtil.isSpecialEmpty(jsonObject.getString("onceToken"))) {
 //                                MyApplication.getInstance().setOnceToken(jsonObject.getString("onceToken"));
 //                            }
-                            onNetWorkResponse.onSuccess(what, response);
-                        }
-                    }
-                } else {
-                    if (onNetWorkResponse != null) {
-                        onNetWorkResponse.onResponseCodeError(responseCode, what, response);
+                        onNetWorkResponse.onSuccess(what, response);
                     }
                 }
             }
 
             @Override
-            public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) throws JSONException {
-                Log.d("inparkLog", exception.toString());
+            public void onFailed(int what, Response<String> response) throws JSONException {
                 if (onNetWorkResponse != null) {
-                    onNetWorkResponse.onFailed(what, url, tag, exception, responseCode, networkMillis);
+                    onNetWorkResponse.onFailed(what, response);
                 }
             }
         }, true, false);
@@ -164,7 +122,7 @@ public class NetWorkStringRequest {
 
         void onSuccess(int what, Response<String> response);
 
-        void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis);
+        void onFailed(int what, Response<String> response);
 
         void onResponseCodeError(int responseCode, int what, Response<String> response);
     }
@@ -222,9 +180,9 @@ public class NetWorkStringRequest {
             }
 
             @Override
-            public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) throws JSONException {
+            public void onFailed(int what, Response<String> response) throws JSONException {
                 if (onNetWorkResponse != null) {
-                    onNetWorkResponse.onFailed(what, url, tag, exception, responseCode, networkMillis);
+                    onNetWorkResponse.onFailed(what, response);
                 }
             }
 

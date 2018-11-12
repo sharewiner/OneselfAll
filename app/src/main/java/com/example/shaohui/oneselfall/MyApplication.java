@@ -14,10 +14,18 @@ import com.scwang.smartrefresh.layout.api.RefreshHeader;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
-import com.yolanda.nohttp.Logger;
-import com.yolanda.nohttp.NoHttp;
+import com.yanzhenjie.nohttp.Logger;
+import com.yanzhenjie.nohttp.NoHttp;
+import com.yanzhenjie.nohttp.OkHttpNetworkExecutor;
+import com.yanzhenjie.nohttp.rest.RequestQueue;
 
 public class MyApplication extends Application {
+
+    //请求队列
+    private static RequestQueue mRequestQueue;
+    public static RequestQueue getmRequestQueue(){
+        return mRequestQueue;
+    }
 
     private static MyApplication _instance;
 
@@ -69,9 +77,13 @@ public class MyApplication extends Application {
             StrictMode.setVmPolicy(builder.build());
         }
 
-        NoHttp.initialize(MyApplication.this);
-        Logger.setDebug(true);
-        Logger.setTag("NoHttpSample");
+        //网络请求自定义初始化
+        NoHttp.initialize(this);
+        //请求队列
+        mRequestQueue = NoHttp.newRequestQueue();
+
+        Logger.setDebug(true);// 开启NoHttp的调试模式, 配置后可看到请求过程、日志和错误信息。
+        Logger.setTag("NoHttpSample");// 打印Log的tag。
     }
 
     public static MyApplication getInstance() {

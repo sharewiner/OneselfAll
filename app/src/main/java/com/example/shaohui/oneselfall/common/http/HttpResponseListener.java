@@ -13,25 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.shaohui.oneselfall.http.nohttp;
+package com.example.shaohui.oneselfall.common.http;
 
 import android.content.Context;
 import android.content.DialogInterface;
 
-import com.example.shaohui.oneselfall.base.MyToast;
-import com.yolanda.nohttp.Logger;
-import com.yolanda.nohttp.error.NetworkError;
-import com.yolanda.nohttp.error.NotFoundCacheError;
-import com.yolanda.nohttp.error.TimeoutError;
-import com.yolanda.nohttp.error.URLError;
-import com.yolanda.nohttp.error.UnKnownHostError;
-import com.yolanda.nohttp.rest.OnResponseListener;
-import com.yolanda.nohttp.rest.Request;
-import com.yolanda.nohttp.rest.Response;
+import com.example.shaohui.oneselfall.common.dialog.WaitDialog;
+import com.yanzhenjie.nohttp.rest.OnResponseListener;
+import com.yanzhenjie.nohttp.rest.Request;
+import com.yanzhenjie.nohttp.rest.Response;
 
 import org.json.JSONException;
-
-import java.net.ProtocolException;
 
 /**
  * Created in Nov 4, 2015 12:02:55 PM.
@@ -126,27 +118,10 @@ public class HttpResponseListener<T> implements OnResponseListener<T> {
      * 失败回调.
      */
     @Override
-    public void onFailed(int what, String url, Object tag, Exception exception,
-                         int responseCode, long networkMillis) {
-        if (exception instanceof NetworkError) {// 网络不好
-            MyToast.show(context, "请检查网络。");
-        } else if (exception instanceof TimeoutError) {// 请求超时
-            MyToast.show(context, "请求超时，网络不好或者服务器不稳定。");
-        } else if (exception instanceof UnKnownHostError) {// 找不到服务器
-            MyToast.show(context, "未发现指定服务器。");
-        } else if (exception instanceof URLError) {// URL是错的
-            MyToast.show(context, "URL错误。");
-        } else if (exception instanceof NotFoundCacheError) {            // 这个异常只会在仅仅查找缓存时没有找到缓存时返回
-            MyToast.show(context, "没有发现缓存。");
-        } else if (exception instanceof ProtocolException) {
-            MyToast.show(context, "系统不支持的请求方式。");
-        } else {
-            MyToast.show(context, "未知错误。");
-        }
-        Logger.e("错误：" + exception.getMessage());
+    public void onFailed(int what, Response<T> response) {
         if (callback != null)
             try {
-                callback.onFailed(what, url, tag, exception, responseCode, networkMillis);
+                callback.onFailed(what, response);
             } catch (JSONException e) {
                 e.printStackTrace();
             }

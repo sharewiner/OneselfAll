@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.shaohui.oneselfall.http.nohttp;
+package com.example.shaohui.oneselfall.common.http;
 
 import android.content.Context;
 
-import com.yolanda.nohttp.NoHttp;
-import com.yolanda.nohttp.download.DownloadQueue;
-import com.yolanda.nohttp.rest.Request;
-import com.yolanda.nohttp.rest.RequestQueue;
+import com.yanzhenjie.nohttp.NoHttp;
+import com.yanzhenjie.nohttp.download.DownloadQueue;
+import com.yanzhenjie.nohttp.rest.Request;
+import com.yanzhenjie.nohttp.rest.RequestQueue;
 
 /**
  * Created in Oct 23, 2015 1:00:56 PM.

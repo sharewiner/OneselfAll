@@ -2,22 +2,20 @@ package com.example.shaohui.oneselfall;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceActivity;
 import android.view.View;
-import android.widget.Button;
 
+import com.alibaba.fastjson.JSON;
 import com.bigkoo.svprogresshud.SVProgressHUD;
 import com.example.shaohui.oneselfall.base.BasicActivity;
 import com.example.shaohui.oneselfall.base.setbar.StatusBarUtil;
 import com.example.shaohui.oneselfall.been.UserInfo;
 import com.example.shaohui.oneselfall.common.clock.CountShowedClockView;
+import com.example.shaohui.oneselfall.common.config.Constant;
+import com.example.shaohui.oneselfall.common.config.SysConfig;
+import com.example.shaohui.oneselfall.common.http.NetWorkStringRequest;
 import com.example.shaohui.oneselfall.common.view.StateButton;
-import com.example.shaohui.oneselfall.http.JsonUtil;
-import com.example.shaohui.oneselfall.http.NetWorkStringRequest;
-import com.example.shaohui.oneselfall.http.config.Constant;
-import com.example.shaohui.oneselfall.http.config.SysConfig;
-import com.yolanda.nohttp.RequestMethod;
-import com.yolanda.nohttp.rest.Response;
+import com.yanzhenjie.nohttp.RequestMethod;
+import com.yanzhenjie.nohttp.rest.Response;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -93,6 +91,7 @@ public class MainActivity extends BasicActivity {
      * 测试网络请求
      */
     public void loginAuthentication() {
+
         Map<String, String> paramMap = new HashMap<>();
         paramMap.put("loginMobile", "18676340124");
         paramMap.put("mobileCode", "123456");
@@ -115,7 +114,7 @@ public class MainActivity extends BasicActivity {
                     try {
                         // 如果成功
                         if (jsonResult != null && jsonResult.getString("code").equals(SysConfig.ERROR_CODE_SUCCESS)) {
-                            final UserInfo loginUserInfo = JsonUtil.parseJson(jsonResult.getJSONObject("data").getString("userInfo"), UserInfo.class);
+                            final UserInfo loginUserInfo = JSON.parseObject(jsonResult.getJSONObject("data").getString("userInfo"), UserInfo.class);
                             if (loginUserInfo != null || !"".equals(loginUserInfo)) {//登录成功
                                 showToast("请求成功");
                             } else {//登录失败
@@ -134,9 +133,10 @@ public class MainActivity extends BasicActivity {
         }
 
         @Override
-        public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
+        public void onFailed(int what, Response<String> response) {
             showToast("网络错误");
         }
+
 
         @Override
         public void onResponseCodeError(int responseCode, int what, Response<String> response) {

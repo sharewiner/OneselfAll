@@ -27,6 +27,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+
 }
 
 dependencies {
@@ -62,13 +64,13 @@ dependencies {
     implementation 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.2.3'
     //时间地址选择器
     implementation 'com.contrarywind:Android-PickerView:3.2.7'
-    //网络请求
-    // nohttp
-    implementation 'com.yolanda.nohttp:nohttp:1.0.2'
-    implementation 'com.google.code.gson:gson:2.4'
-    // json解析
-    implementation 'com.alibaba:fastjson:1.1.56.android'
-
     //仿Ios请求状态
     implementation project(':svprogresshud')
+
+    //网络请求
+    // nohttp
+    implementation 'com.yanzhenjie.nohttp:nohttp:1.1.11'
+    implementation 'com.yanzhenjie.nohttp:okhttp:1.1.11'
+    implementation 'com.alibaba:fastjson:1.2.51'
+    implementation 'com.alibaba:fastjson:1.1.70.android'
 }

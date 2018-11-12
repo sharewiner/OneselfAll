@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.shaohui.oneselfall.http.nohttp;
+package com.example.shaohui.oneselfall.common.http;
 
-import com.yolanda.nohttp.rest.Response;
+import com.yanzhenjie.nohttp.rest.Response;
 
 import org.json.JSONException;
 
@@ -29,6 +29,6 @@ public interface HttpListener<T> {
 
     void onSucceed(int what, Response<T> response) throws JSONException;
 
-    void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) throws JSONException;
+    void onFailed(int what, Response<T> response) throws JSONException;
 
 }

@@ -1,91 +1,35 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:customs="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical">
 
+    <com.example.shaohui.oneselfall.common.energy.EnergyView
+        android:id="@+id/energy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-    <com.example.shaohui.oneselfall.common.view.MyReboundScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:scaleType="centerCrop"
-                    android:src="@mipmap/ic_launcher" />
-
-                <com.itheima.roundedimageview.RoundedImageView
-                    android:id="@+id/riv_header"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="90dp"
-                    android:src="@drawable/time_bg"
-                    app:riv_corner_radius="90dp"
-                    app:riv_oval="true" />
-            </RelativeLayout>
-
-            <com.example.shaohui.oneselfall.common.clock.CountShowedClockView
-                android:id="@+id/csc_show"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@color/bg"
-                android:gravity="center"
-                android:padding="10dp"
-                customs:countHeight="60dp"
-                customs:countShowNumber="9"
-                customs:countSpace="5sp"
-                customs:countTextBackground="@drawable/time_bg"
-                customs:countTextColor="#ffffff"
-                customs:countTextSize="20sp"
-                customs:countWidth="30dp" />
-
-            <com.example.shaohui.oneselfall.common.view.StateButton
-                android:id="@+id/sbt_one"
-                android:layout_width="200dp"
-                android:layout_height="45dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:text="计算"
-                app:normalBackgroundColor="@color/gay"
-                app:normalTextColor="@color/orange"
-                app:pressedBackgroundColor="@color/orange"
-                app:pressedTextColor="@color/gay"
-                app:radius="8dp"
-                app:unableBackgroundColor="@color/gay"
-                app:unableTextColor="@color/orange" />
-
-        </LinearLayout>
-
-    </com.example.shaohui.oneselfall.common.view.MyReboundScrollView>
-
-    <com.example.shaohui.oneselfall.base.setbar.StatusBarHeightView
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:orientation="vertical"
-        app:use_type="use_padding_top">
+        android:layout_marginTop="10dp"
+        android:text="激活" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:gravity="center"
-            android:text="标题"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
+    <Button
+        android:id="@+id/btn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="增长" />
 
-    </com.example.shaohui.oneselfall.base.setbar.StatusBarHeightView>
-</RelativeLayout>
+    <Button
+        android:id="@+id/btn3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="恢复" />
+</LinearLayout>

@@ -38,6 +38,7 @@
 
         <activity android:name=".activity.CateActivity" />
         <activity android:name=".activity.LeftRightSlideActivity" />
+        <activity android:name=".snow.SnowActivity" />
     </application>
 
 </manifest>

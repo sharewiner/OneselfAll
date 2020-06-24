@@ -12,6 +12,7 @@ import android.view.WindowManager;
 import com.example.shaohui.oneselfall.MainActivity;
 import com.example.shaohui.oneselfall.MyApplication;
 import com.example.shaohui.oneselfall.R;
+import com.example.shaohui.oneselfall.snow.SnowActivity;
 
 public class SplashActivity extends Activity {
     //储存信息
@@ -66,7 +67,7 @@ public class SplashActivity extends Activity {
      */
     public void autoLogin() {
         Intent intents = new Intent();
-        intents.setClass(this, MainActivity.class);
+        intents.setClass(this, SnowActivity.class);
         intents.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intents);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);

@@ -1,8 +1,6 @@
 apply plugin: 'com.android.application'
 
 android {
-//    aaptOptions.cruncherEnabled = false
-//    aaptOptions.useNewCruncher = false
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.example.shaohui.oneselfall"
